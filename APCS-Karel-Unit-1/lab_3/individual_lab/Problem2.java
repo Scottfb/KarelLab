@@ -17,8 +17,20 @@ public class Problem2 extends Robot
     public void carpetRooms(){
         newRoom();
         checkRoom();
-        leaveRoom();
         newRoom();
+        checkRoom();
+        newRoom();
+        checkRoom();
+        newRoom();
+        checkRoom();
+        newRoom();
+        checkRoom();
+        newRoom();
+        checkRoom();
+        newRoom();
+        checkRoom();
+        newRoom();
+        checkRoom();
     }
     public void newRoom() {
         move();
@@ -26,12 +38,33 @@ public class Problem2 extends Robot
         move();
     }
     public void checkRoom() {
-        if (frontIsClear()) {
+        if (!frontIsClear()) {
             turnLeft();
-            if (frontIsClear())
-            turnLeft();
-            turnLeft();
+            if (!frontIsClear()) {
+                turnLeft();
+                turnLeft();
+                if (!frontIsClear()) {
+                    putBeeper();
+                    leaveRoom();
+                } else {
+                    leaveRoom();
+                }
+            } else {
+                leaveRoom();
+            }
+        } else {
+            leaveRoom();
         }
     }
+        public void leaveRoom() {
+        for(int i = 0; i < 3; i++) {
+            if (!facingSouth()) {
+                turnLeft();
+            }
+        }
+        move();
+        turnLeft();
+    }
 }
+
 
